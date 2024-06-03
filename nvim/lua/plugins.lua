@@ -17,3 +17,8 @@ require'lspconfig'.clangd.setup{
       return util.root_pattern(unpack(root_files))(fname) or util.find_git_ancestor(fname)
     end,
 }
+
+vim.o.timeout = true
+vim.o.timeoutlen = 300
+require("which-key").setup {
+}
