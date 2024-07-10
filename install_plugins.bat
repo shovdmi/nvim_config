@@ -13,3 +13,5 @@ git clone https://github.com/akinsho/bufferline.nvim.git     --depth 1 %current_
 git clone https://github.com/nvim-tree/nvim-web-devicons.git --depth 1 %current_dir%nvim/pack/nvim/start/nvim-web-devicons
 
 git clone https://github.com/liuchengxu/vista.vim.git        --depth 1 %current_dir%nvim/pack/nvim/start/vista.vim
+
+git clone https://github.com/mfussenegger/nvim-dap.git       --depth 1 nvim/pack/nvim/start/nvim-dap
