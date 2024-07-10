@@ -1,5 +1,6 @@
-set XDG_CONFIG_HOME=C:\Work\nvim_config_test\
-set XDG_CONFIG_DIRS=C:\Work\nvim_config_test\
-REM nvim --clean -u C:\Work\nvim_config_test\nvim\init.lua
+SET current_dir=%~dp0
+set XDG_CONFIG_HOME=%current_dir%
+set XDG_CONFIG_DIRS=%current_dir%
+REM nvim --clean -u %current_dir%nvim\init.lua
 PATH=%PATH%;c:\clangd\clangd_18.1.3\bin
-nvim-qt -- --clean -u C:\Work\nvim_config_test\nvim\init.lua %1 %2 %3 %4 %5 %6 %7 %8 %9
+nvim-qt -- --clean -u %current_dir%nvim\init.lua %1 %2 %3 %4 %5 %6 %7 %8 %9
