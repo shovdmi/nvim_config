@@ -107,7 +107,11 @@ dap.adapters.gdb = {
   --'target remote :57447'
   --lua vim.fn.termopen(cmd)
   command = "C:\\gcc\\xpack-arm-none-eabi-gcc-13.3.1-1.1\\bin\\arm-none-eabi-gdb-py3.exe", -- C:\\SysGCC\\arm-eabi\\bin\\arm-none-eabi-gdb.exe",
-  args = {"-ex", "target", "extended-remote", ":2331",  "-i", "dap", "--eval-command", "set print pretty on" }
+  args = {"-ex", "target extended-remote :2331",  "-i", "dap",
+  "--eval-command", "set print pretty on",
+  "--quiet",
+  --,"C:\\\\github_repositories\\\\nvim_config\\\\a.elf"
+  }
 }
 
 --local dap = require("dap")
@@ -122,7 +126,8 @@ dap.configurations.c = {
 	  --local out = vim.fn.system(cmd)
       
 	  --return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '\\', 'file')
-	  return vim.fn.getcwd() .. '\\a.elf'
+	  --return vim.fn.getcwd() .. '\\\\a.elf'
+	  return "C:\\\\github_repositories\\\\nvim_config\\\\a.elf"
     end,
     cwd = "${workspaceFolder}",
     stopAtBeginningOfMainSubprogram = false,
@@ -132,6 +137,9 @@ dap.configurations.c = {
 if vim.fn.executable('gdb') == 1 then
    require('plugins.dap.c')
 end
+
+dap.configurations.cpp  = dap.configurations.c
+dap.configurations.rust = dap.configurations.c
 
 vim.fn.sign_define('DapBreakpoint', {text='🛑', texthl='', linehl='', numhl=''})
 
