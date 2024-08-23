@@ -110,6 +110,8 @@ dap.adapters.gdb = {
   args = {"-ex", "target extended-remote :2331",  "-i", "dap",
   "--eval-command", "set print pretty on",
   "--quiet",
+  "-iex", "set debug dap-log-level 2",
+  "-iex", "set debug dap-log-file gdb-dap.log"
   --,"C:\\\\github_repositories\\\\nvim_config\\\\a.elf"
   }
 }
