@@ -96,3 +96,43 @@ require("which-key").setup {
 
 vim.opt.termguicolors = true
 require("bufferline").setup{}
+
+---------------------------------------------------------------------
+
+local dap = require("dap")
+dap.adapters.gdb = {
+  type = "executable",
+  --'C:\Program Files (x86)\SEGGER\JLink_V644i\JLinkGDBServerCL.exe -select USB -device GD32F405RG -speed 1000 -if SWD -timeout 5000 -port 57447'
+  --'C:\SysGCC\arm-eabi-10.3.1-r1\bin\arm-none-eabi-gdb.exe --interpreter mi "C:\Work\p133\projects_vs\VisualGDB\Debug\atol-stb6"'
+  --'target remote :57447'
+  --lua vim.fn.termopen(cmd)
+  command = "C:\\gcc\\xpack-arm-none-eabi-gcc-13.3.1-1.1\\bin\\arm-none-eabi-gdb-py3.exe", -- C:\\SysGCC\\arm-eabi\\bin\\arm-none-eabi-gdb.exe",
+  args = {"-ex", "target", "extended-remote", ":2331",  "-i", "dap", "--eval-command", "set print pretty on" }
+}
+
+--local dap = require("dap")
+dap.configurations.c = {
+  {
+    name = "Launch",
+    type = "gdb",
+    request = "launch",
+    program = function()
+	  --local cmd = { "C:\\Program Files (x86)\\SEGGER\\JLink_V644i\\JLinkGDBServerCL.exe", "-select", "USB",  "-device", "GD32F405RG",  "-speed", "1000",  "-if", "SWD", "-timeout", "5000", "-port", "57447"}
+	  --vim.fn.termopen(cmd)
+	  --local out = vim.fn.system(cmd)
+      
+	  --return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '\\', 'file')
+	  return vim.fn.getcwd() .. '\\a.elf'
+    end,
+    cwd = "${workspaceFolder}",
+    stopAtBeginningOfMainSubprogram = false,
+  },
+}
+
+if vim.fn.executable('gdb') == 1 then
+   require('plugins.dap.c')
+end
+
+vim.fn.sign_define('DapBreakpoint', {text='🛑', texthl='', linehl='', numhl=''})
+
+dap.set_log_level('TRACE')
