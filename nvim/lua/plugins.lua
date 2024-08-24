@@ -109,9 +109,12 @@ dap.adapters.gdb = {
   command = "C:\\gcc\\xpack-arm-none-eabi-gcc-13.3.1-1.1\\bin\\arm-none-eabi-gdb-py3.exe", -- C:\\SysGCC\\arm-eabi\\bin\\arm-none-eabi-gdb.exe",
   args = {"-ex", "target extended-remote :2331",  "-i", "dap",
   "--eval-command", "set print pretty on",
-  "--quiet",
+--  "--quiet",
   "-iex", "set debug dap-log-level 2",
   "-iex", "set debug dap-log-file gdb-dap.log"
+  ,"-ex", "set exception-verbose on"
+  ,"-ex", "set exception-debugger on"
+  ,"-ex", "set debug target on"
   --,"C:\\\\github_repositories\\\\nvim_config\\\\a.elf"
   }
 }
@@ -132,7 +135,7 @@ dap.configurations.c = {
 	  return "C:\\\\github_repositories\\\\nvim_config\\\\a.elf"
     end,
     cwd = "${workspaceFolder}",
-    stopAtBeginningOfMainSubprogram = false,
+    stopAtBeginningOfMainSubprogram = true,
   },
 }
 
