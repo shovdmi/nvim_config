@@ -13,3 +13,7 @@ nvim-qt -- --clean -u %current_dir%nvim\init.lua %1 %2 %3 %4 %5 %6 %7 %8 %9
 
 
 REM read `:h standard-path`
+REM read `:h plugins`, `:h packages`
+REM plugin directory ~/.local/share/nvim/site/plugin
+REM                  ~/.local/share/nvim/site/pack/*/start
+REM Configuration file is ~/.config/nvim/init.lua
